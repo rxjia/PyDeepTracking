@@ -31,8 +31,8 @@ def LoadSensorData(file, params):
     self.index = torch.LongTensor(self.height, self.width)
     for y in range(self.height):
         for x in range(self.width):
-            px = (x - 1) * params.grid_step + params.grid_minX
-            py = (y - 1) * params.grid_step + params.grid_minY
+            px = x * params.grid_step + params.grid_minX
+            py = y * params.grid_step + params.grid_minY
             angle = math.degrees(math.atan2(px, py))
             self.dist[y][x] = math.sqrt(px * px + py * py)
             self.index[y][x] = math.floor((angle - params.sensor_start) / params.sensor_step + 1.5)

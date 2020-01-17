@@ -162,11 +162,11 @@ if __name__ == '__main__':
 
         # print statistics
         running_loss += loss.item()
-        if k % p_size == 0:  # print every 2000 mini-batches
+        if (k + 1) % p_size == 0:  # print every 2000 mini-batches
             print('Iteration' + str(k) + ', lost: ' + str(running_loss / p_size))
             running_loss = 0.0
 
-            if k % s_size == 0:
+            if (k + 1) % s_size == 0:
                 for i in range(len(input)):
                     save_tensor_img(output[i],
                                     data_dir + '/video_' + params.model + '/output/' + str(i) + '.png')
